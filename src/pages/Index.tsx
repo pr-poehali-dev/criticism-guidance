@@ -89,14 +89,28 @@ const blocks = [
 ];
 
 export default function Index() {
+  const handlePrint = () => window.print();
+
   return (
     <div
-      className="min-h-screen font-golos py-10 px-4"
+      className="min-h-screen font-golos py-10 px-4 print-page"
       style={{ background: heroGradient }}
     >
+      {/* КНОПКА ПЕЧАТИ */}
+      <div className="max-w-3xl mx-auto flex justify-end mb-4 no-print">
+        <button
+          onClick={handlePrint}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 active:scale-95"
+          style={{ background: 'linear-gradient(90deg, #2d9e7a, #2a7db5)' }}
+        >
+          <Icon name="Printer" size={16} />
+          Версия для печати (А4)
+        </button>
+      </div>
+
       {/* HERO */}
-      <div className="max-w-3xl mx-auto text-center mb-12">
-        <div className="inline-block mb-4 px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide bg-white/70 text-teal-700 border border-teal-200 shadow-sm">
+      <div className="max-w-3xl mx-auto text-center mb-8 print-block">
+        <div className="inline-block mb-4 px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide bg-white/70 text-teal-700 border border-teal-200 shadow-sm no-print">
           Памятка-инфографика
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight mb-3">
@@ -111,10 +125,10 @@ export default function Index() {
       </div>
 
       {/* BLOCKS */}
-      <div className="max-w-3xl mx-auto flex flex-col gap-7">
+      <div className="max-w-3xl mx-auto flex flex-col gap-5">
 
         {/* BLOCK 1 — Первая помощь */}
-        <div className={`rounded-3xl border ${blocks[0].border} bg-gradient-to-br ${blocks[0].color} p-7 shadow-sm`}>
+        <div className={`print-block rounded-3xl border ${blocks[0].border} bg-gradient-to-br ${blocks[0].color} p-6 shadow-sm`}>
           <BlockHeader block={blocks[0]} />
           <div className="flex flex-col gap-3 mt-5">
             {blocks[0].items.map((item, i) => (
@@ -130,7 +144,7 @@ export default function Index() {
         </div>
 
         {/* BLOCK 2 — Тест-фильтр */}
-        <div className={`rounded-3xl border ${blocks[1].border} bg-gradient-to-br ${blocks[1].color} p-7 shadow-sm`}>
+        <div className={`print-block rounded-3xl border ${blocks[1].border} bg-gradient-to-br ${blocks[1].color} p-6 shadow-sm`}>
           <BlockHeader block={blocks[1]} />
           <div className="flex flex-col gap-4 mt-5">
             {blocks[1].questions!.map((q, i) => (
@@ -156,7 +170,7 @@ export default function Index() {
         </div>
 
         {/* BLOCK 3 — Железные правила */}
-        <div className={`rounded-3xl border ${blocks[2].border} bg-gradient-to-br ${blocks[2].color} p-7 shadow-sm`}>
+        <div className={`print-block rounded-3xl border ${blocks[2].border} bg-gradient-to-br ${blocks[2].color} p-6 shadow-sm`}>
           <BlockHeader block={blocks[2]} />
           <div className="flex flex-col gap-3 mt-5">
             {blocks[2].rules!.map((rule, i) => (
@@ -174,7 +188,7 @@ export default function Index() {
         </div>
 
         {/* BLOCK 4 — Чек-лист */}
-        <div className={`rounded-3xl border ${blocks[3].border} bg-gradient-to-br ${blocks[3].color} p-7 shadow-sm`}>
+        <div className={`print-block rounded-3xl border ${blocks[3].border} bg-gradient-to-br ${blocks[3].color} p-6 shadow-sm`}>
           <BlockHeader block={blocks[3]} />
           <div className="flex flex-col gap-2.5 mt-5">
             {blocks[3].checks!.map((check, i) => (
@@ -201,7 +215,7 @@ export default function Index() {
 
         {/* QUOTE */}
         <div
-          className="rounded-3xl p-8 text-center shadow-sm border border-white/60"
+          className="print-block rounded-3xl p-6 text-center shadow-sm border border-white/60"
           style={{ background: 'linear-gradient(135deg, #d4eee6 0%, #cfe8f7 100%)' }}
         >
           <p className="text-2xl mb-3">🌱</p>
